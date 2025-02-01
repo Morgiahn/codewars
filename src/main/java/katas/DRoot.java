@@ -4,7 +4,7 @@ public class DRoot {
     public static int digital_root(int n) {
         while ( n > 9 ) {
             n = recuriveRoot(n, 0);
-        };
+        }
         return n;
     }
 

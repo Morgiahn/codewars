@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindUniqNumberTest {
 
-    private double precision = 0.0000000000001;
+    private final double precision = 0.0000000000001;
 
     @Test
     public void sampleTestCases() {
