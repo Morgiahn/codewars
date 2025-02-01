@@ -8,7 +8,7 @@ public class SpinWords {
         String[] words = sentence.split(" ");
         StringBuilder sb = new StringBuilder();
         for(String w: words) {
-            sb.append(reverse0(w) + " ");
+            sb.append(reverse0(w)).append(" ");
         }
         return sb.toString().trim();
     }
