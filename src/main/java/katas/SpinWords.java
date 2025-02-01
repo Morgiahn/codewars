@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class SpinWords {
     public String spinWords0(String sentence) {
-        //TODO: Code stuff here
         String[] words = sentence.split(" ");
         String result = "";
         for(String w: words) {
@@ -24,7 +23,6 @@ public class SpinWords {
     }
 
     public String spinWords(String sentence) {
-        //TODO: Code stuff here
         return Arrays.stream(sentence.split(" "))
                 .map(SpinWords::reverse)
                 .collect(Collectors.joining(" "));
