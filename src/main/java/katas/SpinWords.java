@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 public class SpinWords {
     public String spinWords0(String sentence) {
         String[] words = sentence.split(" ");
-        String result = "";
+        StringBuilder sb = new StringBuilder();
         for(String w: words) {
-            result += reverse0(w) + " ";
+            sb.append(reverse0(w) + " ");
         }
-        return result.trim();
+        return sb.toString().trim();
     }
 
     private static String reverse0(String e) {
