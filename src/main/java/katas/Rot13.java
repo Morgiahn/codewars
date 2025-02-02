@@ -38,12 +38,50 @@ public class Rot13 {
 
 
     private static int rotateLowerCodeAscii(int codeAscii) {
-        System.out.println("in " + codeAscii);
         codeAscii += ROT;
         if (codeAscii > ASCII_z) {
             codeAscii -= 2 * ROT;
         }
-        System.out.println("out: " + codeAscii);
         return codeAscii;
     }
 }
+
+/* solutions
+
+  static String rot13(String message) {
+    return message.chars().mapToObj(c -> "" + (char) c)
+        .map(c -> "" + (char) (c.charAt(0) + (c.matches("(?i)[A-M]") ? 13 : c.matches("(?i)[N-Z]") ? -13 : 0)))
+        .collect(joining());
+  }
+
+static String rot13(String message) {
+    var in = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    var out = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+    var encoded = new StringBuilder();
+    for (char c : message.toCharArray()) {
+      int i = in.indexOf(c);
+      if (i >= 0) {
+        c = out.charAt(i);
+      }
+      encoded.append(c);
+    }
+    return encoded.toString();
+  }
+
+
+
+  private static final Map<String, String> CHAR_MAPPING = new HashMap<>();
+
+    static {
+        IntStream.rangeClosed('A', 'M').forEach(key -> CHAR_MAPPING.put(String.valueOf((char) key), String.valueOf((char) (key + 13))));
+        IntStream.rangeClosed('N', 'Z').forEach(key -> CHAR_MAPPING.put(String.valueOf((char) key), String.valueOf((char) (key - 13))));
+        IntStream.rangeClosed('a', 'm').forEach(key -> CHAR_MAPPING.put(String.valueOf((char) key), String.valueOf((char) (key + 13))));
+        IntStream.rangeClosed('n', 'z').forEach(key -> CHAR_MAPPING.put(String.valueOf((char) key), String.valueOf((char) (key - 13))));
+    }
+
+   public static String rot13(String message) {
+      return Arrays.stream(message.split("")).map(key -> CHAR_MAPPING.getOrDefault(key, key)).collect(Collectors.joining());
+
+   }
+
+ */
