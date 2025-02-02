@@ -10,23 +10,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Rot13Test {
     @Test
-    void rotateA() {
+    void rotate_a() {
         assertEquals("n", Rot13.rot13("a"));
     }
     @Test
-    void rotateZ() {
+    void rotate_z() {
         assertEquals("m", Rot13.rot13("z"));
     }    @Test
-    void rotateY() {
+    void rotate_y() {
         assertEquals("l", Rot13.rot13("y"));
     }
 
     @Test
     void rotateUpperZ() {
         assertEquals("M", Rot13.rot13("Z"));
-    }    @Test
+    }
+    @Test
     void rotateUpperY() {
         assertEquals("L", Rot13.rot13("Y"));
+    }
+    @Test
+    void rotateUpperM() {
+        assertEquals("Z", Rot13.rot13("M"));
     }
 
     @Test

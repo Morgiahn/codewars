@@ -1,7 +1,5 @@
 package katas;
 
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 /*
 How can you tell an extrovert from an introvert at NSA?
@@ -21,26 +19,31 @@ Test examples:
 
  */
 public class Rot13 {
+    private static int ASCII_Z = 90;
+    private static int ASCII_A = 65;
+    private static int ASCII_a = 97;
+    private static int ASCII_z = 122;
+    private static int OFFSET_CASE = 32;
+    private static int ROT = 13;
+
     public static String rot13(String message) {
         return message.chars()
-                .map(Rot13::rotateCodeAscii)
+                .map(i -> i <= ASCII_Z && i >= ASCII_A ?  rotateLowerCodeAscii(i + OFFSET_CASE) - OFFSET_CASE : i)
+                .map(i -> i >= ASCII_a && i <= ASCII_z ? rotateLowerCodeAscii(i) : i)
                 .collect(StringBuffer::new,
                             StringBuffer::appendCodePoint,
                             (sb1, sb2) -> sb1.append(sb2))
-                .toString();
+                .toString( );
     }
 
 
-    private static int rotateCodeAscii(int codeAscii) {
-        if (codeAscii < 91 && codeAscii >  64) {
-            return  rotateCodeAscii(codeAscii + 32) - 32;
+    private static int rotateLowerCodeAscii(int codeAscii) {
+        System.out.println("in " + codeAscii);
+        codeAscii += ROT;
+        if (codeAscii > ASCII_z) {
+            codeAscii -= 2 * ROT;
         }
-        else if (codeAscii > 96 && codeAscii < 123) {
-            codeAscii += 13;
-            if (codeAscii >= 122) {
-                codeAscii -= 2 * 13;
-            }
-        }
+        System.out.println("out: " + codeAscii);
         return codeAscii;
     }
 }
