@@ -11,7 +11,8 @@ class StringIncrementerTest {
 // TODO: Replace examples and use TDD by writing your own tests
 
         private static void doTest(String str, String expected) {
-            String actual = assertDoesNotThrow(() -> StringIncrementer.incrementString(str), "Solution thrown an unexpected exception for str=\"" + str + "\"\n\n");
+            String actual = assertDoesNotThrow(
+                    () -> StringIncrementer.incrementString(str), "Solution thrown an unexpected exception for str=\"" + str + "\"\n\n");
             assertEquals(expected, actual, "Incorrect answer for str=\"" + str + "\"\n\n");
         }
 
