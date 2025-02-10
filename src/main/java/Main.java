@@ -1,4 +1,4 @@
-import katas.PigLatin;
+import katas.fundamentals.PigLatin;
 
 public class Main {
 
