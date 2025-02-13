@@ -1,6 +1,6 @@
 package katas.fundamentals.tictactoe;
 
-import katas.fundamentals.tictactoe.TicTacToeGenerator;
+//import katas.fundamentals.tictactoe.TicTacToeGenerator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

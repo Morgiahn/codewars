@@ -1,7 +1,7 @@
 package katas.rankup.gameoflife;
 
-import katas.rankup.gameoflife.ConwayLife;
-import katas.rankup.gameoflife.LifeDebug;
+//import katas.rankup.gameoflife.ConwayLife;
+//import katas.rankup.gameoflife.LifeDebug;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package katas.fundamentals.incrementer;
+package katas.fundamentals.easy;
 
-import katas.fundamentals.easy.WhoLikesIt;
+//import katas.fundamentals.easy.WhoLikesIt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package katas.fundamentals.rgbtohex;
 
-import katas.fundamentals.rgbtohex.RgbToHex;
+//import katas.fundamentals.rgbtohex.RgbToHex;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

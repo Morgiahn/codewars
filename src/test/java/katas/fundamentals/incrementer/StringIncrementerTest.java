@@ -2,6 +2,7 @@ package katas.fundamentals.incrementer;
 
 import org.junit.jupiter.api.Test;
 
+//import static katas.fundamentals.incrementer.StringIncrementer.incrementNumber;
 import static katas.fundamentals.incrementer.StringIncrementer.incrementNumber;
 import static org.junit.jupiter.api.Assertions.*;
 
