@@ -31,3 +31,13 @@ class XbonacciTest {
     
 
 }
+/*
+Log
+Testing for signature: [6.0, 18.0, 7.0] and n: 8
+Testing for signature: [11.0, 20.0, 19.0] and n: 10
+Testing for signature: [12.0, 11.0, 3.0] and n: 25
+Testing for signature: [19.0, 1.0, 20.0] and n: 3
+Testing for signature: [3.0, 2.0, 8.0] and n: 16
+Testing for signature: [9.0, 6.0, 11.0] and n: 27
+Testing for signature: [2.0, 18.0, 9.0] and n: 0
+ */
