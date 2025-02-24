@@ -33,27 +33,22 @@ public class Xbonacci {
 
     public double[] tribonacci(double[] s, int n) {
         // hackonacci me
-<<<<<<< Updated upstream
-        double[] result = new double[n];
-=======
         if (n==0) { return new double[]{}; }
 
         double[] result = new double[s.length + n];
-        //  recopie des 3 premiers
->>>>>>> Stashed changes
-        IntStream.range(0, s.length).forEach( i -> result[i] = s[i]);
-        // calcul des 3 a n
 
-<<<<<<< Updated upstream
-        IntStream.range(3, s.length).forEach( i -> result[i] = Arrays.stream(result, i - 3, i).sum());
-=======
+        //  recopie des 3 premiers
+        IntStream.range(0, s.length).forEach( i -> result[i] = s[i]);
+
+        // calcul des 3 a n
         for (int i = 3; i < n; i++) {
             int finalI = i;
             result[i] = IntStream.range(0, 4).mapToDouble(u -> result[ finalI + u-3] ).sum();
->>>>>>> Stashed changes
 
         }
+
         return Arrays.copyOfRange(result, 0, n);
+
     }
 
 }

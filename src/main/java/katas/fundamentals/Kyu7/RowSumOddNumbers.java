@@ -16,39 +16,18 @@ Ginven the triangle of consecutive odd numbers:
 public class RowSumOddNumbers {
     public static int rowSumOddNumbers(int n) {
 
-//        ArrayList<Integer> file = makeArray(n);
         return somme(n);
     }
 
-    public static ArrayList<Integer> makeArray(int rows) {
-        ArrayList<Integer> file = null;
-        int number = 1;
-        int row = 0;
-        while(row < rows) {
-            row ++;
-            //
-            file = new ArrayList<>();
-            while( file.size() < row) {
-                number += 2;
-                file.add(number);
-            }
-        }
-        return file;
-    }
-
     public static int somme(int rows) {
-        ArrayList<Integer> file = null;
         int number = 1;
         int row = 0;
         int total = 0;
         while(row < rows) {
             row ++;
-            //
-            file = new ArrayList<>();
             total = 0;
-            while( file.size() < row) {
+            for (int numberInRows = 0; numberInRows < row; numberInRows++) {
                 total += number;
-                file.add(total);
                 number += 2;
             }
         }
