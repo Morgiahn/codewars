@@ -1,6 +1,8 @@
 package katas.fundamentals.Kyu7;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
+
 /*
 Ginven the triangle of consecutive odd numbers:
 
@@ -15,22 +17,20 @@ Ginven the triangle of consecutive odd numbers:
  */
 public class RowSumOddNumbers {
     public static int rowSumOddNumbers(int n) {
-
-        return somme(n);
+        int start = n * (n  - 1) + 1;
+        return  totalNumbers(start, n);
     }
 
-    public static int somme(int rows) {
-        int number = 1;
-        int row = 0;
-        int total = 0;
-        while(row < rows) {
-            row ++;
-            total = 0;
-            for (int numberInRows = 0; numberInRows < row; numberInRows++) {
-                total += number;
-                number += 2;
-            }
+    public static int totalNumbers(int number, int row) {
+        int  total = 0;
+        for (int numberInRows = 0; numberInRows < row; numberInRows++) {
+            total += number;
+            number += 2;
         }
         return total;
+    }
+
+    public static int getFirstNumber(int rows) {
+        return rows * (rows  - 1) + 1;
     }
 }
