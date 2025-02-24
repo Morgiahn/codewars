@@ -3,6 +3,7 @@ package katas.fundamentals.kyu6;
 import lombok.Value;
 
 import java.util.Arrays;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 /*
@@ -28,26 +29,48 @@ If you enjoyed this kata more advanced and generalized version of it can be foun
 
  */
 public class Xbonacci {
+
+
     public double[] tribonacci(double[] s, int n) {
         // hackonacci me
+<<<<<<< Updated upstream
         double[] result = new double[n];
+=======
+        if (n==0) { return new double[]{}; }
+
+        double[] result = new double[s.length + n];
+        //  recopie des 3 premiers
+>>>>>>> Stashed changes
         IntStream.range(0, s.length).forEach( i -> result[i] = s[i]);
+        // calcul des 3 a n
 
+<<<<<<< Updated upstream
         IntStream.range(3, s.length).forEach( i -> result[i] = Arrays.stream(result, i - 3, i).sum());
+=======
+        for (int i = 3; i < n; i++) {
+            int finalI = i;
+            result[i] = IntStream.range(0, 4).mapToDouble(u -> result[ finalI + u-3] ).sum();
+>>>>>>> Stashed changes
 
-        for (int indexResult = 3; indexResult < result.length ; indexResult++) {
-            // sum three
-            double count3 = 0;
-            for (int i = 0; i < 3; i++) {
-                double num = result[indexResult + i - 3];
-                count3 += num;
-            }
-            result[indexResult] = count3;
         }
-        return result;
+        return Arrays.copyOfRange(result, 0, n);
     }
 
 }
+
+/*
+public double[] tribonacci(double[] s, int n) {
+
+	    double[] tritab=Arrays.copyOf(s, n);
+	    for(int i=3;i<n;i++){
+	    	tritab[i]=tritab[i-1]+tritab[i-2]+tritab[i-3];
+	    }
+	    return tritab;
+
+	  }
+}
+ */
+
 
 /*
         for (int indexResult = 3; indexResult < result.length ; indexResult++) {
