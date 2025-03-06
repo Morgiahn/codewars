@@ -69,27 +69,45 @@ public class DirReduction {
 
     public static String[] dirReduc(String[] arr) {
         // Your code here.
+        String[] reduced = arr;
+        int oldLength = reduced.length;
         int length = 0;
-        while (length != arr.length) {
-            String[] reduced = new DirReduction().reduction(arr);
+        while (length != oldLength) {
+            oldLength = reduced.length;
+            reduced = DirReduction.reduction(arr);
             length = reduced.length;
             arr = reduced;
         }
 
-        return new String[] {};
+        return reduced;
     }
 
-    public String[] reduction (String[] arr) {
+    public static String[] reduction (String[] arr) {
+        if (arr.length == 0) {
+            return arr;
+        }
         List<Dir> dirs = Arrays.stream(arr).map(Dir::new).toList();
         List<Dir> reducedDirs = new ArrayList<>();
+        boolean lastIsOpp = false;
         for (int i = 0; i < dirs.size() -1; i++) {
+            lastIsOpp = false;
+
             if (dirs.get(i).isOpposite(dirs.get(i+1))) {
                 i += 1;
+                if (i == dirs.size() -1) {
+                    lastIsOpp = true;
+                }
                 continue;
             }
             reducedDirs.add(dirs.get(i));
         }
+        if (!lastIsOpp) {
+            reducedDirs.add(dirs.getLast());
+        }
         return reducedDirs.stream().map(Dir::dir).toArray(String[]::new);
     }
+
+
+    
 
 }
