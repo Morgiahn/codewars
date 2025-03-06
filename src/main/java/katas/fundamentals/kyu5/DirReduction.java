@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /*
 Once upon a time, on a way through the old wild mountainous west,…
@@ -66,61 +65,47 @@ public class DirReduction {
                 default -> false;
             };
         }
+        public String toString() {
+            return dir;
+        }
     }
 
     public static String[] dirReduc(String[] arr) {
         // Your code here.
-        String[] reduced = arr;
-        int oldLength = reduced.length;
-        int length = 0;
+        int oldLength = 0;
+        int length =  arr.length;;
         while (length != oldLength) {
-            oldLength = reduced.length;
-            reduced = DirReduction.reduction(arr);
-            length = reduced.length;
-            arr = reduced;
+            oldLength = arr.length;
+            arr = DirReduction.reduction(arr);
+            length = arr.length;
         }
-
-        return reduced;
+        return arr;
     }
 
     public static String[] reduction (String[] arr) {
-//        if (arr.length == 0) {
-//            return arr;
-//        }
         List<Dir> dirs = Arrays.stream(arr).map(Dir::new).toList();
         List<Dir> reducedDirs = new ArrayList<>();
-//        boolean lastIsOpp = false;
-//        for (int i = 0; i < dirs.size() -1; i++) {
-//            lastIsOpp = false;
-//
-//            if (dirs.get(i).isOpposite(dirs.get(i+1))) {
-//                i += 1;
-//                if (i == dirs.size() -1) {
-//                    lastIsOpp = true;
-//                }
-//                continue;
-//            }
-//            reducedDirs.add(dirs.get(i));
-//        }
-//        if (!lastIsOpp) {
-//            reducedDirs.add(dirs.getLast());
-//        }
-//        return reducedDirs.stream().map(Dir::dir).toArray(String[]::new);
-
-        Iterator<Dir> it = dirs.iterator();
-        while (it.hasNext()) {
-            Dir d1 = it.next();
-            Dir d2 = it.hasNext() ? it.next() : null;
-            if (d2 != null && d1.isOpposite(d2)) {
-//                it.next();
-            } else {
-                reducedDirs.add(d1);
+        int i=0;
+        while (i < dirs.size()) {
+            if (i == dirs.size() -1) {
+                reducedDirs.add(dirs.get(i));
+                break;
             }
-
-
+            if (dirs.get(i).isOpposite(dirs.get(i +1 ))) {
+                i += 2;
+            }
+            else  {
+                reducedDirs.add(dirs.get(i));
+                i++;
+            }
         }
         return reducedDirs.stream().map(Dir::dir).toArray(String[]::new);
     }
+
+
+
+
+
 
 
 
