@@ -2,6 +2,7 @@ package katas.fundamentals.kyu5;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -83,31 +84,44 @@ public class DirReduction {
     }
 
     public static String[] reduction (String[] arr) {
-        if (arr.length == 0) {
-            return arr;
-        }
+//        if (arr.length == 0) {
+//            return arr;
+//        }
         List<Dir> dirs = Arrays.stream(arr).map(Dir::new).toList();
         List<Dir> reducedDirs = new ArrayList<>();
-        boolean lastIsOpp = false;
-        for (int i = 0; i < dirs.size() -1; i++) {
-            lastIsOpp = false;
+//        boolean lastIsOpp = false;
+//        for (int i = 0; i < dirs.size() -1; i++) {
+//            lastIsOpp = false;
+//
+//            if (dirs.get(i).isOpposite(dirs.get(i+1))) {
+//                i += 1;
+//                if (i == dirs.size() -1) {
+//                    lastIsOpp = true;
+//                }
+//                continue;
+//            }
+//            reducedDirs.add(dirs.get(i));
+//        }
+//        if (!lastIsOpp) {
+//            reducedDirs.add(dirs.getLast());
+//        }
+//        return reducedDirs.stream().map(Dir::dir).toArray(String[]::new);
 
-            if (dirs.get(i).isOpposite(dirs.get(i+1))) {
-                i += 1;
-                if (i == dirs.size() -1) {
-                    lastIsOpp = true;
-                }
-                continue;
+        Iterator<Dir> it = dirs.iterator();
+        while (it.hasNext()) {
+            Dir d1 = it.next();
+            Dir d2 = it.hasNext() ? it.next() : null;
+            if (d2 != null && d1.isOpposite(d2)) {
+//                it.next();
+            } else {
+                reducedDirs.add(d1);
             }
-            reducedDirs.add(dirs.get(i));
-        }
-        if (!lastIsOpp) {
-            reducedDirs.add(dirs.getLast());
+
+
         }
         return reducedDirs.stream().map(Dir::dir).toArray(String[]::new);
     }
 
 
-    
 
 }
