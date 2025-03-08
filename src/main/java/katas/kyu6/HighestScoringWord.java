@@ -30,7 +30,7 @@ public class HighestScoringWord {
         return r.get();
     }
 
-    static int wordValue(String s) {
+    public static int wordValue(String s) {
         return s.chars().mapToObj(i -> i - 96).reduce( 0, (x, y ) -> x = x+ y);
     }
 }
