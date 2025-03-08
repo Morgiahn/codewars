@@ -1,5 +1,6 @@
 package katas.fundamentals.kyu5;
 
+import katas.kyu5.DirReduction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

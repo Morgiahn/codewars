@@ -1,5 +1,6 @@
 package katas.fundamentals.Kyu7;
 
+import katas.Kyu7.FriendOrFoe;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

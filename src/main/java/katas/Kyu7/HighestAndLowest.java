@@ -1,4 +1,4 @@
-package katas.fundamentals.Kyu7;
+package katas.Kyu7;
 
 import java.util.Arrays;
 import java.util.List;

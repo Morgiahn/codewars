@@ -1,4 +1,4 @@
-package katas.fundamentals.kyu6;
+package katas.kyu6;
 
 
 /*

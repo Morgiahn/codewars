@@ -1,5 +1,6 @@
 package katas.fundamentals.kyu6;
 
+import katas.kyu6.HighestScoringWord;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,8 +1,7 @@
-package katas.fundamentals.kyu5;
+package katas.kyu5;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -110,3 +109,82 @@ public class DirReduction {
 
 
 }
+
+/*import java.util.Stack;
+
+public class DirReduction {
+    public static String[] dirReduc(String[] arr) {
+        final Stack<String> stack = new Stack<>();
+
+        for (final String direction : arr) {
+            final String lastElement = stack.size() > 0 ? stack.lastElement() : null;
+
+            switch(direction) {
+                case "NORTH": if ("SOUTH".equals(lastElement)) { stack.pop(); } else { stack.push(direction); } break;
+                case "SOUTH": if ("NORTH".equals(lastElement)) { stack.pop(); } else { stack.push(direction); } break;
+                case "EAST":  if ("WEST".equals(lastElement)) { stack.pop(); } else { stack.push(direction); } break;
+                case "WEST":  if ("EAST".equals(lastElement)) { stack.pop(); } else { stack.push(direction); } break;
+            }
+        }
+        return stack.stream().toArray(String[]::new);
+    }
+}
+*/
+
+/*
+
+    public static String[] reduction (String[] arr) {
+        List<Dir> dirs = Arrays.stream(arr).map(Dir::new).toList();
+        List<Dir> reducedDirs = new ArrayList<>();
+        int i=0;
+        while (i < dirs.size()) {
+            if (i == dirs.size() -1) {
+                reducedDirs.add(dirs.get(i));
+                break;
+            }
+            if (dirs.get(i).isOpposite(dirs.get(i +1 ))) {
+                i += 2;
+            }
+            else  {
+                reducedDirs.add(dirs.get(i));
+                i++;
+            }
+        }
+        return reducedDirs.stream().map(Dir::dir).toArray(String[]::new);
+    }
+
+ */
+
+/*
+public class DirReduction {
+
+  public static String[] dirReduc(String[] a) {
+    Stack<String> result = new Stack<String>();
+    for (int i = 0; i < a.length; i++) {
+      if (result.size() > 0) {
+        switch (a[i]) {
+          case "NORTH":
+            if (result.peek() == "SOUTH") result.pop();
+            else result.push(a[i]);
+            break;
+          case "SOUTH":
+            if (result.peek() == "NORTH") result.pop();
+            else result.push(a[i]);
+            break;
+          case "EAST":
+            if (result.peek() == "WEST") result.pop();
+            else result.push(a[i]);
+            break;
+          case "WEST":
+            if (result.peek() == "EAST") result.pop();
+            else result.push(a[i]);
+            break;
+        }
+      }
+      else result.push(a[i]);
+    }
+    return result.toArray(new String[result.size()]);
+  }
+
+}
+ */

@@ -1,6 +1,7 @@
 package katas.fundamentals.kyu6;
 
 
+import katas.kyu6.Order;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

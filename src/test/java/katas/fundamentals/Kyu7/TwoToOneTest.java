@@ -1,6 +1,7 @@
 package katas.fundamentals.Kyu7;
 
 
+import katas.Kyu7.TwoToOne;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
