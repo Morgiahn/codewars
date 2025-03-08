@@ -1,5 +1,6 @@
 package katas.fundamentals.Kyu7;
 
+import katas.Kyu7.Square;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

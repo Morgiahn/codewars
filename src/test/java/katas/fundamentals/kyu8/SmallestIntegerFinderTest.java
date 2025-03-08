@@ -1,5 +1,6 @@
 package katas.fundamentals.kyu8;
 
+import katas.kyu8.SmallestIntegerFinder;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

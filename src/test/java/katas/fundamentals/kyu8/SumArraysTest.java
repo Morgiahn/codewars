@@ -1,5 +1,6 @@
 package katas.fundamentals.kyu8;
 
+import katas.kyu8.SumArrays;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

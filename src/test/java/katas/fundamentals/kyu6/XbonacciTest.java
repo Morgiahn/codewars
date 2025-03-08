@@ -1,5 +1,6 @@
 package katas.fundamentals.kyu6;
 
+import katas.kyu6.Xbonacci;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
