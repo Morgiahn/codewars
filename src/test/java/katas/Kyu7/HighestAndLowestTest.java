@@ -1,4 +1,4 @@
-package katas.fundamentals.Kyu7;
+package katas.Kyu7;
 
 import katas.Kyu7.HighestAndLowest;
 import org.junit.jupiter.api.Test;

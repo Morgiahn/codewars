@@ -1,4 +1,4 @@
-package katas.fundamentals.kyu8;
+package katas.kyu8;
 
 import org.junit.jupiter.api.Test;
 

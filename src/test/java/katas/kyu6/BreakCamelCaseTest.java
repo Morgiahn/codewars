@@ -1,4 +1,4 @@
-package katas.fundamentals.kyu6;
+package katas.kyu6;
 
 import katas.kyu6.BreakCamelCase;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package katas.fundamentals.kyu5;
+package katas.kyu5;
 
 import katas.kyu5.DirReduction;
 import org.junit.jupiter.api.Test;

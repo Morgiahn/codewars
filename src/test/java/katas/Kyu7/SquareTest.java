@@ -1,4 +1,4 @@
-package katas.fundamentals.Kyu7;
+package katas.Kyu7;
 
 import katas.Kyu7.Square;
 import org.junit.jupiter.api.Test;
