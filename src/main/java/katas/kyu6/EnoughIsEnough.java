@@ -51,7 +51,38 @@ public class EnoughIsEnough {
 	}
 }
 
+1. Déclaration des variables
 
+Map<Integer, Integer> occurrence = new HashMap<>();
+
+    Création d'une HashMap pour stocker la fréquence d'apparition de chaque nombre.
+    La clé est le nombre du tableau elements, et la valeur est son nombre d'apparitions rencontrées jusqu'à présent.
+
+2. Conversion en IntStream
+
+return IntStream.of(elements)
+
+    Transforme le tableau d'entiers elements en un IntStream, permettant un traitement fonctionnel.
+
+3. Filtrage avec filter et merge
+
+.filter(motif -> occurrence.merge(motif, 1, Integer::sum) <= maxOccurrences)
+
+    Pour chaque motif (élément du tableau) :
+        occurrence.merge(motif, 1, Integer::sum) :
+            Ajoute motif dans la HashMap avec une valeur initiale 1 si ce n'est pas encore présent.
+            Sinon, il incrémente sa valeur actuelle de 1 grâce à Integer::sum.
+            En clair, il compte le nombre d'apparitions du motif.
+        <= maxOccurrences :
+            On conserve l'élément uniquement si son occurrence actuelle ne dépasse pas maxOccurrences.
+
+4. Conversion en tableau
+
+.toArray();
+
+    Convertit le Stream filtré en un tableau int[].
+
+--------------------------------------------
 
 
 
