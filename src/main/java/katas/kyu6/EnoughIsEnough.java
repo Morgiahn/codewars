@@ -73,7 +73,8 @@ return IntStream.of(elements)
             Ajoute motif dans la HashMap avec une valeur initiale 1 si ce n'est pas encore présent.
             Sinon, il incrémente sa valeur actuelle de 1 grâce à Integer::sum.
             En clair, il compte le nombre d'apparitions du motif.
-        <= maxOccurrences :
+        filter on <= maxOccurrences :
+            merge renvoi la nouvelle valeur (la somme)
             On conserve l'élément uniquement si son occurrence actuelle ne dépasse pas maxOccurrences.
 
 4. Conversion en tableau
