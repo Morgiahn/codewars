@@ -27,6 +27,8 @@ public class SumTwoSmallestNumbers {
 
 
 /*
+// O(n log n)
+// stream overhead
   public static long sumTwoSmallestNumbers(final long [] numbers) {
      return Arrays.stream(numbers)
                     .sorted()
@@ -35,4 +37,22 @@ public class SumTwoSmallestNumbers {
   }
 
 
+ */
+
+/*
+O(n)
+public static long sumTwoSmallestNumbers(long[] numbers) {
+    long min1 = Long.MAX_VALUE, min2 = Long.MAX_VALUE;
+
+    for (long num : numbers) {
+        if (num < min1) {
+            min2 = min1;
+            min1 = num;
+        } else if (num < min2) {
+            min2 = num;
+        }
+    }
+
+    return min1 + min2;
+}
  */
