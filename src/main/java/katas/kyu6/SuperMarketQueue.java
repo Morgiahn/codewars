@@ -1,10 +1,8 @@
 package katas.kyu6;
 
 import java.util.*;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /*
 There is a queue for the self-checkout tills at the supermarket.
@@ -24,95 +22,86 @@ output
 
 The function should return an integer, the total time required.
 
+Examples
+
+queueTime([5,3,4], 1)
+// should return 12
+// because when there is 1 till, the total time is just the sum of the times
+
+queueTime([10,2,3,3], 2)
+// should return 10
+// because here n=2 and the 2nd, 3rd, and 4th people in the
+// queue finish before the 1st person has finished.
+
+queueTime([2,3,10], 2)
+// should return 12
+
+
+
+Clarifications
+
+    There is only ONE queue serving many tills, and
+    The order of the queue NEVER changes, and
+    The front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as it becomes free.
+
+N.B. You should assume that all the test input will be valid, as specified above.
+
+P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
+
+
  */
 
 public class SuperMarketQueue {
 
-    public static Logger log = Logger.getLogger("SuperMarketQueue");
-
-    static {
-        ConsoleHandler handler = new ConsoleHandler();
-        handler.setFormatter(new SimpleFormatter() {
-            @Override
-            public String format(LogRecord record) {
-                return String.format("[%s] %s - %s\n",
-                        record.getLevel(),
-                        record.getLoggerName(),
-                        record.getMessage());
-            }
-        });
-        log.setUseParentHandlers(false);
-        log.addHandler(handler);
+    static void addTillCustomer(int[] tills, LinkedList<Integer> stackFifo) {
+        IntStream.range(0, tills.length)
+                .filter(i -> tills[i] == 0)
+                .forEach(i -> {
+                    if (!stackFifo.isEmpty()) {
+                        tills[i] = stackFifo.remove();
+                    }
+                });
     }
 
-    static class Till {
-        int time;
-        Till(int time) {
-            this.time = time;
-        }
-        void setTime(int t) { time = t; }
-        boolean isAvailable() { return time == 0; }
-        void update() {
-            time--;
-            if (time < 0) { time = 0; }
-        }
+    static int collectsFirstCustomerTime(int[] tills, LinkedList<Integer> stackFifo) {
+        int minTillValue = Arrays.stream(tills).filter(till -> till > 0).min().orElse(0);
+        IntStream.range(0, tills.length)
+                .filter(i -> tills[i] >= minTillValue)
+                .forEach(i -> tills[i] -= minTillValue);
+        return  minTillValue;
     }
 
     public static int solveSuperMarketQueue(int[] customers, int n) {
-
         if (customers.length == 0) {  return 0; }
-        LinkedList<Integer> stackFifo =  new LinkedList<>();
-        for(int c : customers) {
-            stackFifo.add(c);
-        }
-
-        List<Till> tills = new ArrayList<>();
-        for (int i =0; i<n;i++) {
-            tills.add(new Till(0));
-        }
 
         int totalTime = 0;
-        while(!stackFifo.isEmpty() || anyTillIsBusy(tills) ) {
-            totalTime++;
-            // execution en parallele
-            String stills = "";
-            for(int i=0; i<n; i++) {
-                Till till = tills.get(i);
-                // check till
-                String operation = " -";
-                if (till.isAvailable() && !stackFifo.isEmpty()) {
-                    int customerTime = stackFifo.remove();
-                    till.setTime(customerTime);
-                    operation = "<" + customerTime;
-                }
-                till.update();
-                stills += " till("+i + "):" + operation;
-            }
+        int[] tills =  new int[n];
+        LinkedList<Integer> stackFifo = Arrays.stream(customers).boxed().collect(Collectors.toCollection(LinkedList::new));
 
-            log.info("round " + totalTime + " " +  stills + " queue : " + stackFifo.size());
-            log.info(debugTime( tills, stackFifo, totalTime, n));
+        while(!stackFifo.isEmpty()) {
+            addTillCustomer(tills, stackFifo);
+            totalTime += collectsFirstCustomerTime(tills, stackFifo);
         }
-        // all customers gone and all tills are free
+        // remaining customers in tills
+        int maxTillValue =  Arrays.stream(tills).filter(till -> till >= 0).max().orElse(Integer.MIN_VALUE);
+        totalTime += maxTillValue;
         return totalTime;
     }
 
-    static boolean anyTillIsBusy(List<Till> tills) {
-        for (Till till: tills) {
-            if (!till.isAvailable()) {
-                return true;
-            }
-        }
-        return false;
+}
+
+/*
+import java.util.Arrays;
+public class SuperMarketQueue {
+
+    public static int solveSuperMarketQueue(int[] customers, int n) {
+      int[] result = new int[n];
+		  for(int i = 0; i < customers.length; i++){
+	    	result[0] += customers[i];
+	    	Arrays.sort(result);
+	    }
+		  return result[n-1];
     }
-
-    static String debugTime(List<Till> tills, LinkedList<Integer> stackFifo, int totalTime, int n) {
-
-        String stills = "";
-        for(int i = 0; i < n; i++ ) {
-            stills += " till("+i + "): " + tills.get(i).time;
-        }
-        return "round " + totalTime + " " + stills + " queue : " + stackFifo.size();
-    }
-
 
 }
+*/
