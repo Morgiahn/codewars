@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/java/main/java" isTestSource="$SPRING_CLOUD_CONFIG_ENABLED$" />
+      <sourceFolder url="file://$MODULE_DIR$/java/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/kyu8/ReversedString/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/kyu8/numberToString/target" />
+    </content>
+  </component>
+</module>

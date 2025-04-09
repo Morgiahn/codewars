@@ -26,4 +26,6 @@ replay_pid*
 
 target
 
+java/.DS_Store
 .DS_Store
+*.DS_Store
