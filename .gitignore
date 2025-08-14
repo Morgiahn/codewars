@@ -29,3 +29,7 @@ target
 java/.DS_Store
 .DS_Store
 *.DS_Store
+
+java/main/java/.DS_Store
+java/main/.DS_Store
+java/.DS_Store
